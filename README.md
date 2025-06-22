@@ -46,10 +46,10 @@ components/              # React components
 services/               
 - dataSimulator.ts    # Real-time data simulation
   
-- types/                  
+types/                  
 - index.ts            # TypeScript interfaces
                 
-- index.css           # CSS styles
+index.css           # CSS styles
 
 Key Components
 Dashboard.tsx
