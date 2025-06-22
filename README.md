@@ -1,10 +1,7 @@
-Greenhouse Dashboard
-A real-time React dashboard for monitoring greenhouse sensor data with advanced filtering, sorting, and responsive design.
-
-CHECK IT OUT AT: https://greenhouse-sensor-dashboard.vercel.app/
-
-Real-Time Sensor Dashboard
+🌱 Real-Time Sensor Dashboard 🌱
 This project is a responsive and performant dashboard for visualizing real-time sensor data, built with React and TypeScript.
+
+🚀 CHECK IT OUT AT: https://greenhouse-sensor-dashboard.vercel.app/
 
 Features
 - Real-Time Data Updates: Simulates a live data feed with new sensor readings every 2 seconds.
