@@ -96,7 +96,7 @@ Performance Optimizations
 3. Rendering Optimization
 - Selective re-renders
 - Memoized table rows
-- Responsive CSS (no JavaScript media queries)
+- Responsive CSS 
 
 🔧Customization Options
 
@@ -114,7 +114,7 @@ The initial filter settings are defined as follows:
 - airQuality: { min: 0, max: 150 }
 
 🎨 Styling & Theming
-The application uses Tailwind CSS with custom utility classes:
+The application uses CSS
 
 Color Scheme
 - Primary: Green theme (emerald-500, green-400)
