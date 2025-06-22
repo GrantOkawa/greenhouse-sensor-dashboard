@@ -32,7 +32,22 @@ npm install
 # Start development server
 npm start
 
-<pre lang="markdown"> ## 📁 Project Structure ``` src/ ├── components/ # React components │ ├── Dashboard.tsx # Main container component │ ├── DataTable.tsx # Data display component │ ├── FilterControls.tsx # Filter and sort controls │ ├── Header.tsx # Application header │ └── Pagination.tsx # Pagination controls ├── services/ │ └── dataSimulator.ts # Real-time data simulation ├── types/ │ └── index.ts # TypeScript interfaces └── styles/ # CSS/Tailwind styles ``` </pre>
+Project Structure
+
+The project is organized as follows:
+src/
+├── components/              # React components
+│   ├── Dashboard.tsx       # Main container component
+│   ├── DataTable.tsx       # Data display component
+│   ├── FilterControls.tsx  # Filter and sort controls
+│   ├── Header.tsx          # Application header
+│   └── Pagination.tsx      # Pagination controls
+├── services/               
+│   └── dataSimulator.ts    # Real-time data simulation
+├── types/                  
+│   └── index.ts            # TypeScript interfaces
+└── styles/                 
+    └── index.css           # CSS/Tailwind styles
 
 Key Components
 Dashboard.tsx
@@ -85,21 +100,16 @@ Performance Optimizations
 
 Data Ranges
 Modify dataSimulator.ts to adjust sensor value ranges:
-
-typescriptconst generateMetrics = (sensorId: string): SensorData => ({
-  temperature: +(15 + Math.random() * 25).toFixed(2), // 15-40°C
-  humidity: +(40 + Math.random() * 40).toFixed(2),    // 40-80%
-  airQuality: +(Math.random() * 150).toFixed(2),      // 0-150 AQI
-});
+- temperature: (15 + Math.random() * 25).toFixed(2) // 15-40°C
+- humidity: (40 + Math.random() * 40).toFixed(2) // 40-80%
+- airQuality: (Math.random() * 150).toFixed(2) // 0-150 AQI
 
 Filter Defaults
 Update Dashboard.tsx initial filters:
-
-typescriptconst INITIAL_FILTERS: Filters = {
-  temperature: { min: 15, max: 35 },
-  humidity: { min: 40, max: 80 },
-  airQuality: { min: 0, max: 150 },
-};
+The initial filter settings are defined as follows:
+- temperature: { min: 15, max: 35 }
+- humidity: { min: 40, max: 80 }
+- airQuality: { min: 0, max: 150 }
 
 🎨 Styling & Theming
 The application uses Tailwind CSS with custom utility classes:
@@ -115,11 +125,19 @@ Responsive Breakpoints
 - Desktop: ≥ 768px (table view)
 - Large: ≥ 1024px (expanded layout)
 
-Custom Classes
-css.desktop-only { display: none; }
-.mobile-only { display: block; }
+Custom CSS classes for responsive design are defined in index.css:
+.desktop-only {
+  display: none;
+}
+.mobile-only {
+  display: block;
+}
 
 @media (min-width: 768px) {
-  .desktop-only { display: block; }
-  .mobile-only { display: none; }
+  .desktop-only {
+    display: block;
+  }
+  .mobile-only {
+    display: none;
+  }
 }
