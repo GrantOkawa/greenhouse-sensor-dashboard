@@ -32,20 +32,7 @@ npm install
 # Start development server
 npm start
 
-📁 Project Structure
-src/
-/components/ React Components
-/components/Dashboard.tsx      # Main container component
-/components/DataTable.tsx      # Data display component
-/components/FilterControls.tsx # Filter and sort controls
-/components/Header.tsx         # Application header
-/components/Pagination.tsx     # Pagination controls
-
-/services/dataSimulator.ts     # Real-time data simulation
-
-/types/index.ts                # Typescript interfaces
-
-/styles/                       # CSS styles
+<pre lang="markdown"> ## 📁 Project Structure ``` src/ ├── components/ # React components │ ├── Dashboard.tsx # Main container component │ ├── DataTable.tsx # Data display component │ ├── FilterControls.tsx # Filter and sort controls │ ├── Header.tsx # Application header │ └── Pagination.tsx # Pagination controls ├── services/ │ └── dataSimulator.ts # Real-time data simulation ├── types/ │ └── index.ts # TypeScript interfaces └── styles/ # CSS/Tailwind styles ``` </pre>
 
 Key Components
 Dashboard.tsx
