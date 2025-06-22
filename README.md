@@ -34,17 +34,18 @@ npm start
 
 📁 Project Structure
 src/
-├── components/           # React components
-│   ├── Dashboard.tsx    # Main container component
-│   ├── DataTable.tsx    # Data display component
-│   ├── FilterControls.tsx # Filter and sort controls
-│   ├── Header.tsx       # Application header
-│   └── Pagination.tsx   # Pagination controls
-├── services/
-│   └── dataSimulator.ts # Real-time data simulation
-├── types/
-│   └── index.ts         # TypeScript interfaces
-└── styles/              # CSS/Tailwind styles
+/components/ React Components
+/components/Dashboard.tsx      # Main container component
+/components/DataTable.tsx      # Data display component
+/components/FilterControls.tsx # Filter and sort controls
+/components/Header.tsx         # Application header
+/components/Pagination.tsx     # Pagination controls
+
+/services/dataSimulator.ts     # Real-time data simulation
+
+/types/index.ts                # Typescript interfaces
+
+/styles/                       # CSS styles
 
 Key Components
 Dashboard.tsx
@@ -97,6 +98,7 @@ Performance Optimizations
 
 Data Ranges
 Modify dataSimulator.ts to adjust sensor value ranges:
+
 typescriptconst generateMetrics = (sensorId: string): SensorData => ({
   temperature: +(15 + Math.random() * 25).toFixed(2), // 15-40°C
   humidity: +(40 + Math.random() * 40).toFixed(2),    // 40-80%
@@ -105,6 +107,7 @@ typescriptconst generateMetrics = (sensorId: string): SensorData => ({
 
 Filter Defaults
 Update Dashboard.tsx initial filters:
+
 typescriptconst INITIAL_FILTERS: Filters = {
   temperature: { min: 15, max: 35 },
   humidity: { min: 40, max: 80 },
