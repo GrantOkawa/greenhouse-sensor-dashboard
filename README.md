@@ -36,18 +36,20 @@ Project Structure
 
 The project is organized as follows:
 src/
-├── components/              # React components
-│   ├── Dashboard.tsx       # Main container component
-│   ├── DataTable.tsx       # Data display component
-│   ├── FilterControls.tsx  # Filter and sort controls
-│   ├── Header.tsx          # Application header
-│   └── Pagination.tsx      # Pagination controls
-├── services/               
-│   └── dataSimulator.ts    # Real-time data simulation
-├── types/                  
-│   └── index.ts            # TypeScript interfaces
-└── styles/                 
-    └── index.css           # CSS/Tailwind styles
+components/              # React components
+- Dashboard.tsx       # Main container component
+- DataTable.tsx       # Data display component
+- FilterControls.tsx  # Filter and sort controls
+- Header.tsx          # Application header
+- Pagination.tsx      # Pagination controls
+
+services/               
+- dataSimulator.ts    # Real-time data simulation
+  
+- types/                  
+- index.ts            # TypeScript interfaces
+                
+- index.css           # CSS styles
 
 Key Components
 Dashboard.tsx
@@ -125,19 +127,4 @@ Responsive Breakpoints
 - Desktop: ≥ 768px (table view)
 - Large: ≥ 1024px (expanded layout)
 
-Custom CSS classes for responsive design are defined in index.css:
-.desktop-only {
-  display: none;
-}
-.mobile-only {
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .desktop-only {
-    display: block;
-  }
-  .mobile-only {
-    display: none;
-  }
-}
+Custom CSS classes for responsive design are defined in index.css
