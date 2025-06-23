@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { SensorData, Filters, SortOrder } from '../types/';
-import { SimulateRealTimeData } from '../services/dataSimulator';
-import Header from './Header';
-import FilterControls from './FilterControls';
-import DataTable from './DataTable';
-import Pagination from './Pagination';
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { SensorData, Filters, SortOrder } from "../types/";
+import { SimulateRealTimeData } from "../services/dataSimulator";
+import Header from "./Header";
+import FilterControls from "./FilterControls";
+import DataTable from "./DataTable";
+import Pagination from "./Pagination";
 
 // Constants moved to top for better maintainability
 const ITEMS_PER_PAGE = 15;
@@ -22,33 +22,39 @@ const Dashboard = () => {
   const [allData, setAllData] = useState<SensorData[]>([]);
   const [filters, setFilters] = useState<Filters>(INITIAL_FILTERS);
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
+  const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
 
   // Memoized filter function for better performance
-  const isDataWithinFilters = useCallback((data: SensorData, filters: Filters): boolean => {
-    return (
-      data.temperature >= filters.temperature.min && 
-      data.temperature <= filters.temperature.max &&
-      data.humidity >= filters.humidity.min && 
-      data.humidity <= filters.humidity.max &&
-      data.airQuality >= filters.airQuality.min && 
-      data.airQuality <= filters.airQuality.max
-    );
-  }, []);
+  const isDataWithinFilters = useCallback(
+    (data: SensorData, filters: Filters): boolean => {
+      return (
+        data.temperature >= filters.temperature.min &&
+        data.temperature <= filters.temperature.max &&
+        data.humidity >= filters.humidity.min &&
+        data.humidity <= filters.humidity.max &&
+        data.airQuality >= filters.airQuality.min &&
+        data.airQuality <= filters.airQuality.max
+      );
+    },
+    []
+  );
 
   // Memoized sort function
-  const sortDataByTimestamp = useCallback((data: SensorData[], order: SortOrder): SensorData[] => {
-    return [...data].sort((a, b) => {
-      const dateA = new Date(a.timestamp).getTime();
-      const dateB = new Date(b.timestamp).getTime();
-      
-      // Handle invalid dates
-      if (isNaN(dateA)) return 1;
-      if (isNaN(dateB)) return -1;
-      
-      return order === 'asc' ? dateA - dateB : dateB - dateA;
-    });
-  }, []);
+  const sortDataByTimestamp = useCallback(
+    (data: SensorData[], order: SortOrder): SensorData[] => {
+      return [...data].sort((a, b) => {
+        const dateA = new Date(a.timestamp).getTime();
+        const dateB = new Date(b.timestamp).getTime();
+
+        // Handle invalid dates
+        if (isNaN(dateA)) return 1;
+        if (isNaN(dateB)) return -1;
+
+        return order === "asc" ? dateA - dateB : dateB - dateA;
+      });
+    },
+    []
+  );
 
   // Data simulation effect
   useEffect(() => {
@@ -57,20 +63,24 @@ const Dashboard = () => {
         console.warn("Received invalid or empty update from simulation.");
         return;
       }
-      
-      setAllData(prevData => {
+
+      setAllData((prevData) => {
         const combined = [...newUpdates, ...prevData];
         return combined.slice(0, MAX_DATA_POINTS);
       });
     };
 
-    const stopSimulation = SimulateRealTimeData(SENSOR_COUNT, UPDATE_INTERVAL, handleDataUpdate);
+    const stopSimulation = SimulateRealTimeData(
+      SENSOR_COUNT,
+      UPDATE_INTERVAL,
+      handleDataUpdate
+    );
     return () => stopSimulation();
   }, []);
 
   // Filtered data computation
   const filteredData = useMemo(() => {
-    return allData.filter(data => isDataWithinFilters(data, filters));
+    return allData.filter((data) => isDataWithinFilters(data, filters));
   }, [allData, filters, isDataWithinFilters]);
 
   // Sorted data computation
@@ -94,21 +104,24 @@ const Dashboard = () => {
     setCurrentPage(1); // Reset to first page when filters change
   }, []);
 
-  const handlePageChange = useCallback((page: number) => {
-    if (page > 0 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  }, [totalPages]);
+  const handlePageChange = useCallback(
+    (page: number) => {
+      if (page > 0 && page <= totalPages) {
+        setCurrentPage(page);
+      }
+    },
+    [totalPages]
+  );
 
   const handleSortToggle = useCallback(() => {
-    setSortOrder(currentOrder => (currentOrder === 'asc' ? 'desc' : 'asc'));
+    setSortOrder((currentOrder) => (currentOrder === "asc" ? "desc" : "asc"));
     setCurrentPage(1); // Reset to first page when sort changes
   }, []);
 
   const handleResetFilters = useCallback(() => {
-  setFilters(INITIAL_FILTERS);
-  setCurrentPage(1);
-}, []);
+    setFilters(INITIAL_FILTERS);
+    setCurrentPage(1);
+  }, []);
 
   return (
     <div className="dashboard">
@@ -122,10 +135,10 @@ const Dashboard = () => {
           onReset={handleResetFilters}
         />
         <DataTable data={paginatedData} />
-        <Pagination 
-          currentPage={currentPage} 
-          totalPages={totalPages} 
-          onPageChange={handlePageChange} 
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
         />
       </div>
     </div>

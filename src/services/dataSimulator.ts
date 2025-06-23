@@ -1,5 +1,5 @@
 // src/services/dataSimulator.ts
-import { SensorData } from '../types';
+import { SensorData } from "../types";
 
 // This function simulates real-time data updates from multiple sensors.
 export const SimulateRealTimeData = (

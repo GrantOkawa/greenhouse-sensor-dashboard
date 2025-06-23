@@ -26,12 +26,10 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(
-    135deg,
-    var(--color-gray-900) 0%,
-    var(--color-green-900) 50%,
-    var(--color-gray-900) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--color-gray-900) 0%,
+      var(--color-green-900) 50%,
+      var(--color-gray-900) 100%);
   color: var(--color-white);
   min-height: 100vh;
 }
@@ -65,7 +63,7 @@ body {
   gap: 1rem;
 }
 
-.space-y-4 > * + * {
+.space-y-4>*+* {
   margin-top: 1rem;
 }
 
@@ -226,7 +224,9 @@ body {
 
 /* Animations */
 @keyframes ping {
-  75%, 100% {
+
+  75%,
+  100% {
     transform: scale(2);
     opacity: 0;
   }
@@ -287,16 +287,6 @@ body {
   .record-count {
     display: block;
   }
-}
-
-.live-indicator {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.live-badge {
-  font-weight: 600;
 }
 
 .filter-controls {
@@ -466,11 +456,11 @@ body {
   .desktop-only {
     display: block;
   }
-  
+
   .mobile-only {
     display: none;
   }
-  
+
   .filter-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -480,7 +470,7 @@ body {
   .desktop-only {
     display: none;
   }
-  
+
   .mobile-only {
     display: block;
   }

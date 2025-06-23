@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-const Pagination: React.FC<{ 
-  currentPage: number; 
-  totalPages: number; 
-  onPageChange: (page: number) => void; 
+const Pagination: React.FC<{
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
 }> = ({ currentPage, totalPages, onPageChange }) => {
   if (totalPages <= 1) return null;
 
@@ -14,7 +14,7 @@ const Pagination: React.FC<{
   const handleNext = () => {
     if (currentPage < totalPages) onPageChange(currentPage + 1);
   };
-  
+
   return (
     <nav className="pagination text-white" aria-label="Pagination">
       <button

@@ -15,4 +15,4 @@ export interface Filters {
 }
 
 // Defines the possible sort orders.
-export type SortOrder = 'asc' | 'desc';
+export type SortOrder = "asc" | "desc";
