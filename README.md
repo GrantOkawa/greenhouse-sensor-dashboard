@@ -19,6 +19,7 @@ The project is organized into a clean and maintainable component-based architect
   - FilterControls.tsx: Provides controls for filtering and sorting.
   - DataTable.tsx: Renders the data in a table or card view.
   - Pagination.tsx: Handles page navigation.
+  - SummaryCard.tsx: Provides the average outputs for temp, humidity, and air quality index
 - src/services: Includes the dataSimulator.ts for generating mock sensor data.
 - src/types: Defines TypeScript interfaces and types for data consistency.
 
