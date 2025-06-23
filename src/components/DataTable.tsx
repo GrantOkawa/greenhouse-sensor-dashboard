@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { SensorData } from "../types";
 
-// Utility function for timestamp formatting
+//Converts ISO timestamp to a human-readable format
 const formatTimestamp = (isoString: string): string => {
   try {
     const date = new Date(isoString);
@@ -20,7 +20,7 @@ const formatTimestamp = (isoString: string): string => {
   }
 };
 
-// Color coding logic extracted to separate function
+// Returns the appropriate color class based on the metric value and type (temp, humidity, aqi)
 const getMetricColor = (
   value: number,
   type: "temp" | "humidity" | "aqi"
@@ -44,6 +44,7 @@ const getMetricColor = (
     },
   };
 
+  // For AQI, more specific ranges
   if (type === "aqi") {
     if (value <= colorRanges.aqi.good.max) return "text-green-400";
     if (value <= colorRanges.aqi.warning.max) return "text-yellow-300";
@@ -51,6 +52,7 @@ const getMetricColor = (
     return "text-red-400";
   }
 
+  // For temperature and humidity
   const range = colorRanges[type];
   if (value >= range.good.min && value <= range.good.max)
     return "text-green-400";
@@ -59,11 +61,12 @@ const getMetricColor = (
   return "text-orange-300";
 };
 
-// Memoized table row component
+//A single table row that displays sensor data, wrapped in memo to avoid unnecessary re-renders
 const TableRow = memo<{ data: SensorData }>(({ data }) => (
   <tr className="table-row border-b border-white-10 hover:bg-white-5">
-    <td className="table-cell font-mono">{formatTimestamp(data.timestamp)}</td>
-    <td className="table-cell">{data.sensorId}</td>
+    <td className="table-cell font-mono">{formatTimestamp(data.timestamp)}</td>{" "}
+    //Timestamp
+    <td className="table-cell">{data.sensorId}</td> //Sensor ID
     <td
       className={`table-cell text-right font-semibold ${getMetricColor(
         data.temperature,
@@ -71,7 +74,8 @@ const TableRow = memo<{ data: SensorData }>(({ data }) => (
       )}`}
     >
       {data.temperature.toFixed(2)} °C
-    </td>
+    </td>{" "}
+    //Temperature
     <td
       className={`table-cell text-right font-semibold ${getMetricColor(
         data.humidity,
@@ -79,7 +83,8 @@ const TableRow = memo<{ data: SensorData }>(({ data }) => (
       )}`}
     >
       {data.humidity.toFixed(2)} %
-    </td>
+    </td>{" "}
+    //Humidity
     <td
       className={`table-cell text-right font-semibold ${getMetricColor(
         data.airQuality,
@@ -87,18 +92,20 @@ const TableRow = memo<{ data: SensorData }>(({ data }) => (
       )}`}
     >
       {data.airQuality.toFixed(0)}
-    </td>
+    </td>{" "}
+    //Air Quality Index
   </tr>
 ));
 
-// Memoized mobile card component
+// A mobile-friendly card component that displays sensor data
 const MobileCard = memo<{ data: SensorData }>(({ data }) => (
   <div className="mobile-card bg-white-10 border border-white-20">
     <div className="flex justify-between items-center mb-2">
-      <span className="font-bold text-white">{data.sensorId}</span>
+      <span className="font-bold text-white">{data.sensorId}</span> //Sensor ID
       <span className="text-sm text-gray-300 font-mono">
         {formatTimestamp(data.timestamp)}
-      </span>
+      </span>{" "}
+      //Timestamp
     </div>
     <div className="mobile-data-grid">
       <div>
@@ -107,7 +114,8 @@ const MobileCard = memo<{ data: SensorData }>(({ data }) => (
           className={`metric-value ${getMetricColor(data.temperature, "temp")}`}
         >
           {data.temperature.toFixed(1)}°
-        </p>
+        </p>{" "}
+        //Temperature
       </div>
       <div>
         <p className="metric-label">Humidity</p>
@@ -118,19 +126,21 @@ const MobileCard = memo<{ data: SensorData }>(({ data }) => (
           )}`}
         >
           {data.humidity.toFixed(1)}%
-        </p>
+        </p>{" "}
+        //Humidity
       </div>
       <div>
         <p className="metric-label">AQI</p>
         <p className={`metric-value ${getMetricColor(data.airQuality, "aqi")}`}>
           {data.airQuality.toFixed(0)}
-        </p>
+        </p>{" "}
+        //Air Quality Index
       </div>
     </div>
   </div>
 ));
 
-// Empty state component
+//Shows an empty state when no data is available, user filtered out all data
 const EmptyState = () => (
   <div className="no-data-container bg-white-5 rounded-lg">
     <p className="text-white">No data matches the current filters.</p>
@@ -146,7 +156,7 @@ const DataTable: React.FC<{ data: SensorData[] }> = memo(({ data }) => {
 
   return (
     <div className="data-table-container bg-white-10 backdrop-blur-sm rounded-xl shadow-lg border border-white-20 overflow-hidden">
-      {/* Desktop Table View */}
+      /* Desktop Table View */
       <div className="desktop-only">
         <table className="table">
           <thead className="table-header text-xs text-white uppercase">
@@ -178,8 +188,7 @@ const DataTable: React.FC<{ data: SensorData[] }> = memo(({ data }) => {
           </tbody>
         </table>
       </div>
-
-      {/* Mobile Card View */}
+      /* Mobile Card View */
       <div className="mobile-only p-4 space-y-4">
         {data.map((item) => (
           <MobileCard key={`${item.sensorId}-${item.timestamp}`} data={item} />
@@ -188,9 +197,5 @@ const DataTable: React.FC<{ data: SensorData[] }> = memo(({ data }) => {
     </div>
   );
 });
-
-DataTable.displayName = "DataTable";
-TableRow.displayName = "TableRow";
-MobileCard.displayName = "MobileCard";
 
 export default DataTable;
