@@ -160,8 +160,8 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="dashboard-container">
-        <Header dataLength={allData.length} /> //Displays total number of sensor
-        readings
+        <Header dataLength={allData.length} />{" "}
+        {/* Displays total number of sensor readings*/}
         <FilterControls
           filters={filters}
           onFilterChange={handleFilterChange}
@@ -169,16 +169,16 @@ const Dashboard = () => {
           onSortToggle={handleSortToggle}
           onReset={handleResetFilters}
         />{" "}
-        //UI controls for filtering and sorting
-        <SummaryCard stats={summaryStats} /> //Displays average stats
-        <DataTable data={paginatedData} /> //Displays sensor data in table
-        format
+        {/* UI controls for filtering and sorting */}
+        <SummaryCard stats={summaryStats} /> {/*Displays average stats */}
+        <DataTable data={paginatedData} />{" "}
+        {/*Displays sensor data in table format*/}
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
         />{" "}
-        //Page navigation controls
+        {/* Page navigation controls */}
       </div>
     </div>
   );

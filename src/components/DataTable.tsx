@@ -65,8 +65,7 @@ const getMetricColor = (
 const TableRow = memo<{ data: SensorData }>(({ data }) => (
   <tr className="table-row border-b border-white-10 hover:bg-white-5">
     <td className="table-cell font-mono">{formatTimestamp(data.timestamp)}</td>{" "}
-    //Timestamp
-    <td className="table-cell">{data.sensorId}</td> //Sensor ID
+    <td className="table-cell">{data.sensorId}</td>
     <td
       className={`table-cell text-right font-semibold ${getMetricColor(
         data.temperature,
@@ -75,7 +74,6 @@ const TableRow = memo<{ data: SensorData }>(({ data }) => (
     >
       {data.temperature.toFixed(2)} °C
     </td>{" "}
-    //Temperature
     <td
       className={`table-cell text-right font-semibold ${getMetricColor(
         data.humidity,
@@ -84,7 +82,6 @@ const TableRow = memo<{ data: SensorData }>(({ data }) => (
     >
       {data.humidity.toFixed(2)} %
     </td>{" "}
-    //Humidity
     <td
       className={`table-cell text-right font-semibold ${getMetricColor(
         data.airQuality,
@@ -93,7 +90,6 @@ const TableRow = memo<{ data: SensorData }>(({ data }) => (
     >
       {data.airQuality.toFixed(0)}
     </td>{" "}
-    //Air Quality Index
   </tr>
 ));
 
@@ -101,11 +97,11 @@ const TableRow = memo<{ data: SensorData }>(({ data }) => (
 const MobileCard = memo<{ data: SensorData }>(({ data }) => (
   <div className="mobile-card bg-white-10 border border-white-20">
     <div className="flex justify-between items-center mb-2">
-      <span className="font-bold text-white">{data.sensorId}</span> //Sensor ID
+      <span className="font-bold text-white">{data.sensorId}</span>{" "}
+      {/*Sensor ID */}
       <span className="text-sm text-gray-300 font-mono">
         {formatTimestamp(data.timestamp)}
       </span>{" "}
-      //Timestamp
     </div>
     <div className="mobile-data-grid">
       <div>
@@ -115,7 +111,7 @@ const MobileCard = memo<{ data: SensorData }>(({ data }) => (
         >
           {data.temperature.toFixed(1)}°
         </p>{" "}
-        //Temperature
+        {/*Temperature */}
       </div>
       <div>
         <p className="metric-label">Humidity</p>
@@ -127,14 +123,14 @@ const MobileCard = memo<{ data: SensorData }>(({ data }) => (
         >
           {data.humidity.toFixed(1)}%
         </p>{" "}
-        //Humidity
+        {/* Humidity*/}
       </div>
       <div>
         <p className="metric-label">AQI</p>
         <p className={`metric-value ${getMetricColor(data.airQuality, "aqi")}`}>
           {data.airQuality.toFixed(0)}
         </p>{" "}
-        //Air Quality Index
+        {/*Air Quality Index */}
       </div>
     </div>
   </div>
@@ -156,7 +152,7 @@ const DataTable: React.FC<{ data: SensorData[] }> = memo(({ data }) => {
 
   return (
     <div className="data-table-container bg-white-10 backdrop-blur-sm rounded-xl shadow-lg border border-white-20 overflow-hidden">
-      /* Desktop Table View */
+      {/*Desktop Table View*/}
       <div className="desktop-only">
         <table className="table">
           <thead className="table-header text-xs text-white uppercase">
@@ -188,7 +184,8 @@ const DataTable: React.FC<{ data: SensorData[] }> = memo(({ data }) => {
           </tbody>
         </table>
       </div>
-      /* Mobile Card View */
+
+      {/* Mobile Card View */}
       <div className="mobile-only p-4 space-y-4">
         {data.map((item) => (
           <MobileCard key={`${item.sensorId}-${item.timestamp}`} data={item} />

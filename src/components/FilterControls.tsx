@@ -38,8 +38,8 @@ const FilterControls: React.FC<{
     unit: string;
   }> = ({ label, category, min, max, step, unit }) => (
     <div className="filter-slider-container">
-      <label className="filter-label text-green-100">{label} Range</label> //
-      Label for the slider
+      <label className="filter-label text-green-100">{label} Range</label>{" "}
+      {/*Label for the slider */}
       <div className="slider-container">
         <span className="slider-value">
           {filters[category].min.toFixed(1)}
@@ -56,7 +56,7 @@ const FilterControls: React.FC<{
           aria-label={`${label} min value`}
         />
       </div>{" "}
-      // Slider for setting the minimum value
+      {/* Slider for setting the minimum value*/}
       <div className="slider-container">
         <span className="slider-value">
           {filters[category].max.toFixed(1)}
@@ -73,7 +73,7 @@ const FilterControls: React.FC<{
           aria-label={`${label} max value`}
         />
       </div>{" "}
-      // Slider for setting the maximum value
+      {/* Slider for setting the maximum value*/}
     </div>
   );
 
