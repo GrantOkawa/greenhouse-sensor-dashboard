@@ -1,12 +1,12 @@
-// src/services/dataSimulator.ts
 import { SensorData } from "../types";
 
 // This function simulates real-time data updates from multiple sensors.
 export const SimulateRealTimeData = (
-  sensorCount: number,
-  interval: number,
-  onUpdate: (updates: SensorData[]) => void
+  sensorCount: number, // Number of sensors to simulate
+  interval: number, // Update interval in milliseconds
+  onUpdate: (updates: SensorData[]) => void // Callback to handle new data updates
 ) => {
+  // Function to generate random sensor data, returns a single SensorData object
   const generateMetrics = (sensorId: string): SensorData => ({
     sensorId: sensorId,
     timestamp: new Date().toISOString(),
@@ -15,6 +15,7 @@ export const SimulateRealTimeData = (
     humidity: +(30 + Math.random() * 60).toFixed(2), // 30-90% RH
   });
 
+  // Function to generate and send updates
   const intervalId = setInterval(() => {
     const updates = Array.from({ length: sensorCount }, (_, i) =>
       generateMetrics(`Sensor-${i + 1}`)
@@ -22,5 +23,5 @@ export const SimulateRealTimeData = (
     onUpdate(updates);
   }, interval);
 
-  return () => clearInterval(intervalId);
+  return () => clearInterval(intervalId); //Stop the time, ending the simulation
 };
