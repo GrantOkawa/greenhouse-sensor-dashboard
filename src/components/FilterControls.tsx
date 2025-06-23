@@ -2,18 +2,20 @@ import React from "react";
 import { Filters } from "../types";
 import { SortOrder } from "../types";
 
+// FilterControls component for managing filter inputs and sort order
 const FilterControls: React.FC<{
-  filters: Filters;
-  onFilterChange: (filters: Filters) => void;
-  sortOrder: SortOrder;
-  onSortToggle: () => void;
-  onReset: () => void;
+  filters: Filters; // Current filter values
+  onFilterChange: (filters: Filters) => void; // Function to update filters
+  sortOrder: SortOrder; // Current sort order
+  onSortToggle: () => void; // Function to toggle sort order
+  onReset: () => void; // Function to reset filters
 }> = ({ filters, onFilterChange, sortOrder, onSortToggle, onReset }) => {
   const handleInputChange = (
-    category: keyof Filters,
+    category: keyof Filters, // (temperature, humidity, airQuality)
     type: "min" | "max",
     value: string
   ) => {
+    // Convert input value to a number and calls onFilterChange with updated filters
     const numericValue = parseFloat(value);
     if (!isNaN(numericValue)) {
       onFilterChange({
@@ -26,6 +28,7 @@ const FilterControls: React.FC<{
     }
   };
 
+  // Slider component for each filter category
   const FilterSlider: React.FC<{
     label: string;
     category: keyof Filters;
@@ -35,7 +38,8 @@ const FilterControls: React.FC<{
     unit: string;
   }> = ({ label, category, min, max, step, unit }) => (
     <div className="filter-slider-container">
-      <label className="filter-label text-green-100">{label} Range</label>
+      <label className="filter-label text-green-100">{label} Range</label> //
+      Label for the slider
       <div className="slider-container">
         <span className="slider-value">
           {filters[category].min.toFixed(1)}
@@ -51,7 +55,8 @@ const FilterControls: React.FC<{
           className="slider"
           aria-label={`${label} min value`}
         />
-      </div>
+      </div>{" "}
+      // Slider for setting the minimum value
       <div className="slider-container">
         <span className="slider-value">
           {filters[category].max.toFixed(1)}
@@ -67,7 +72,8 @@ const FilterControls: React.FC<{
           className="slider"
           aria-label={`${label} max value`}
         />
-      </div>
+      </div>{" "}
+      // Slider for setting the maximum value
     </div>
   );
 
@@ -78,7 +84,8 @@ const FilterControls: React.FC<{
         <div className="flex items-center gap-2">
           <button onClick={onReset} className="sort-button">
             Reset
-          </button>
+          </button>{" "}
+          {/* Button to reset filters*/}
           <button
             onClick={onSortToggle}
             className="sort-button"
@@ -103,10 +110,11 @@ const FilterControls: React.FC<{
             <span>
               {sortOrder === "desc" ? "Newest First" : "Oldest First"}
             </span>
-          </button>
+          </button>{" "}
+          {/* Button to toggle sort order */}
         </div>
       </div>
-      {/* Use responsive grid class */}
+      {/* Three sliders temp, humidity, aqi */}
       <div className="grid grid-cols-1 filter-grid gap-4">
         <FilterSlider
           label="Temperature"
