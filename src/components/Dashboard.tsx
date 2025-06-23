@@ -5,6 +5,7 @@ import Header from "./Header";
 import FilterControls from "./FilterControls";
 import DataTable from "./DataTable";
 import Pagination from "./Pagination";
+import SummaryCard from "./SummaryCard";
 
 // Constants moved to top for better maintainability
 const ITEMS_PER_PAGE = 15;
@@ -83,6 +84,29 @@ const Dashboard = () => {
     return allData.filter((data) => isDataWithinFilters(data, filters));
   }, [allData, filters, isDataWithinFilters]);
 
+  // Summary statistics computation
+  const summaryStats = useMemo(() => {
+    if (filteredData.length === 0) {
+      return { avgTemp: 0, avgHumidity: 0, avgAqi: 0 };
+    }
+
+    const totals = filteredData.reduce(
+      (acc, data) => {
+        acc.temp += data.temperature;
+        acc.humidity += data.humidity;
+        acc.aqi += data.airQuality;
+        return acc;
+      },
+      { temp: 0, humidity: 0, aqi: 0 }
+    );
+
+    return {
+      avgTemp: totals.temp / filteredData.length,
+      avgHumidity: totals.humidity / filteredData.length,
+      avgAqi: totals.aqi / filteredData.length,
+    };
+  }, [filteredData]);
+
   // Sorted data computation
   const sortedData = useMemo(() => {
     return sortDataByTimestamp(filteredData, sortOrder);
@@ -134,6 +158,7 @@ const Dashboard = () => {
           onSortToggle={handleSortToggle}
           onReset={handleResetFilters}
         />
+        <SummaryCard stats={summaryStats} />
         <DataTable data={paginatedData} />
         <Pagination
           currentPage={currentPage}
