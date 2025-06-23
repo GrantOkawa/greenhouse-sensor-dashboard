@@ -1,16 +1,19 @@
 import React from "react";
 
+// Pagination component for navigating through pages of data
 const Pagination: React.FC<{
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
+  currentPage: number; // Current page number
+  totalPages: number; // Total number of pages
+  onPageChange: (page: number) => void; // Function to handle page change
 }> = ({ currentPage, totalPages, onPageChange }) => {
   if (totalPages <= 1) return null;
 
+  // Goes back to the previous page if not on the first page
   const handlePrev = () => {
     if (currentPage > 1) onPageChange(currentPage - 1);
   };
 
+  // Goes forward to the next page if not on the last page
   const handleNext = () => {
     if (currentPage < totalPages) onPageChange(currentPage + 1);
   };
@@ -23,17 +26,20 @@ const Pagination: React.FC<{
         className="pagination-button"
       >
         Previous
-      </button>
+      </button>{" "}
+      {/* Button to go to the previous page */}
       <div className="page-info">
         Page {currentPage} of {totalPages}
-      </div>
+      </div>{" "}
+      {/* Display current page and total pages */}
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
         className="pagination-button"
       >
         Next
-      </button>
+      </button>{" "}
+      {/* Button to go to the next page */}
     </nav>
   );
 };
