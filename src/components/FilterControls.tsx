@@ -7,7 +7,8 @@ const FilterControls: React.FC<{
   onFilterChange: (filters: Filters) => void;
   sortOrder: SortOrder;
   onSortToggle: () => void;
-}> = ({ filters, onFilterChange, sortOrder, onSortToggle }) => {
+  onReset: () => void; 
+}> = ({ filters, onFilterChange, sortOrder, onSortToggle, onReset }) => {
   
   const handleInputChange = (category: keyof Filters, type: 'min' | 'max', value: string) => {
     const numericValue = parseFloat(value);
@@ -65,18 +66,21 @@ return (
     <div className="filter-controls bg-white-10 backdrop-blur-sm border border-white-20 shadow-lg rounded-xl">
       <div className="flex justify-between items-center mb-4">
         <h3 className="filter-title">Controls</h3>
-        <button
-          onClick={onSortToggle}
-          className="sort-button"
-          aria-label={`Sort by timestamp: ${sortOrder === 'desc' ? 'Newest First' : 'Oldest First'}`}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="sort-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h9m-9 4h13m0-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-          <span>
-            {sortOrder === 'desc' ? 'Newest First' : 'Oldest First'}
-          </span>
-        </button>
+        <div>
+          <button onClick={onReset} className="sort-button mr-2">Reset</button>
+          <button
+            onClick={onSortToggle}
+            className="sort-button"
+            aria-label={`Sort by timestamp: ${sortOrder === 'desc' ? 'Newest First' : 'Oldest First'}`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="sort-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h9m-9 4h13m0-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>
+              {sortOrder === 'desc' ? 'Newest First' : 'Oldest First'}
+            </span>
+          </button>
+      </div>
       </div>
       {/* Use responsive grid class */}
       <div className="grid grid-cols-1 filter-grid gap-4">

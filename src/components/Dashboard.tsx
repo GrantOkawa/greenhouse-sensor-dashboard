@@ -105,6 +105,11 @@ const Dashboard = () => {
     setCurrentPage(1); // Reset to first page when sort changes
   }, []);
 
+  const handleResetFilters = useCallback(() => {
+  setFilters(INITIAL_FILTERS);
+  setCurrentPage(1);
+}, []);
+
   return (
     <div className="dashboard">
       <div className="dashboard-container">
@@ -114,6 +119,7 @@ const Dashboard = () => {
           onFilterChange={handleFilterChange}
           sortOrder={sortOrder}
           onSortToggle={handleSortToggle}
+          onReset={handleResetFilters}
         />
         <DataTable data={paginatedData} />
         <Pagination 
