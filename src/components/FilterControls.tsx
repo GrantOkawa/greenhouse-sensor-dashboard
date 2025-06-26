@@ -4,13 +4,19 @@ import { SortOrder } from "../types";
 import "../styles/FilterControls.css"; 
 
 // FilterControls component for managing filter inputs and sort order
-const FilterControls: React.FC<{
+const FilterControls = ({ 
+  filters, 
+  onFilterChange, 
+  sortOrder, 
+  onSortToggle, 
+  onReset 
+}: {
   filters: Filters; // Current filter values
   onFilterChange: (filters: Filters) => void; // Function to update filters
   sortOrder: SortOrder; // Current sort order
   onSortToggle: () => void; // Function to toggle sort order
   onReset: () => void; // Function to reset filters
-}> = ({ filters, onFilterChange, sortOrder, onSortToggle, onReset }) => {
+}) => {
   const handleInputChange = (
     category: keyof Filters, // (temperature, humidity, airQuality)
     type: "min" | "max",
@@ -30,14 +36,21 @@ const FilterControls: React.FC<{
   };
 
   // Slider component for each filter category
-  const FilterSlider: React.FC<{
+  const FilterSlider = ({ 
+    label, 
+    category, 
+    min, 
+    max, 
+    step, 
+    unit 
+  }: {
     label: string;
     category: keyof Filters;
     min: number;
     max: number;
     step: number;
     unit: string;
-  }> = ({ label, category, min, max, step, unit }) => (
+  }) => (
     <div className="filter-slider-container">
       <label className="filter-label text-green-100">{label} Range</label>{" "}
       {/*Label for the slider */}

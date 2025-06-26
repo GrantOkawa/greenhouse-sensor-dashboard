@@ -9,7 +9,7 @@ interface SummaryStats {
 
 // SummaryCard component to display average temperature, humidity, and AQI
 // Props: stats - an object containing average temperature, humidity, and AQI
-const SummaryCard: React.FC<{ stats: SummaryStats }> = ({ stats }) => (
+const SummaryCard = ({ stats }: { stats: SummaryStats }) => (
   <div className="grid grid-cols-3 gap-4 mb-6 text-center">
     <div className="bg-white-10 p-4 rounded-xl">
       <p className="text-green-200 text-sm">Avg. Temp</p>

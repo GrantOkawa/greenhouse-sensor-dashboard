@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Header.css"; 
 
 // Header component to display the title and number of records
-const Header: React.FC<{ dataLength: number }> = ({ dataLength }) => (
+const Header = ({ dataLength }: { dataLength: number }) => (
   <header className="header bg-white-10 backdrop-blur-sm border border-white-20 shadow-lg rounded-xl">
     <div className="flex justify-between items-center">
       <div>

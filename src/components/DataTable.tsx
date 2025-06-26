@@ -63,7 +63,7 @@ const getMetricColor = (
 };
 
 //A single table row that displays sensor data, wrapped in memo to avoid unnecessary re-renders
-const TableRow = memo<{ data: SensorData }>(({ data }) => (
+const TableRow = memo(({ data }: { data: SensorData }) => (
   <tr className="table-row border-b border-white-10 hover:bg-white-5">
     <td className="table-cell font-mono">{formatTimestamp(data.timestamp)}</td>{" "}
     <td className="table-cell">{data.sensorId}</td>
@@ -95,7 +95,7 @@ const TableRow = memo<{ data: SensorData }>(({ data }) => (
 ));
 
 // A mobile-friendly card component that displays sensor data
-const MobileCard = memo<{ data: SensorData }>(({ data }) => (
+const MobileCard = memo(({ data }: { data: SensorData }) => (
   <div className="mobile-card bg-white-10 border border-white-20">
     <div className="flex justify-between items-center mb-2">
       <span className="font-bold text-white">{data.sensorId}</span>{" "}
@@ -146,7 +146,7 @@ const EmptyState = () => (
 );
 
 // Main DataTable component
-const DataTable: React.FC<{ data: SensorData[] }> = memo(({ data }) => {
+const DataTable = memo(({ data }: { data: SensorData[] }) => {
   if (data.length === 0) {
     return <EmptyState />;
   }

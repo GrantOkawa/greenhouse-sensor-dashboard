@@ -2,11 +2,15 @@ import React from "react";
 import "../styles/Pagination.css"; 
 
 // Pagination component for navigating through pages of data
-const Pagination: React.FC<{
+const Pagination = ({ 
+  currentPage, 
+  totalPages, 
+  onPageChange 
+}: {
   currentPage: number; // Current page number
   totalPages: number; // Total number of pages
   onPageChange: (page: number) => void; // Function to handle page change
-}> = ({ currentPage, totalPages, onPageChange }) => {
+}) => {
   if (totalPages <= 1) return null;
 
   // Goes back to the previous page if not on the first page
