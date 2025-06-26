@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { SensorData, Filters, SortOrder } from "../types/";
+import { SensorData, Filters, SortOrder } from "../types";
 import { SimulateRealTimeData } from "../services/dataSimulator";
 import Header from "./Header";
 import FilterControls from "./FilterControls";
