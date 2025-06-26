@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Pagination.css"; 
 
 // Pagination component for navigating through pages of data
 const Pagination: React.FC<{

@@ -1,6 +1,7 @@
 import React from "react";
 import { Filters } from "../types";
 import { SortOrder } from "../types";
+import "../styles/FilterControls.css"; 
 
 // FilterControls component for managing filter inputs and sort order
 const FilterControls: React.FC<{

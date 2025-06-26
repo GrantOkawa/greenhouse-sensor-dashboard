@@ -1,0 +1,81 @@
+/* DataTable.css */
+.data-table-container {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.table-header {
+  background-color: var(--color-white-10);
+  font-size: 0.75rem;
+}
+
+.table-header-cell {
+  padding: 0.75rem 1.5rem;
+}
+
+.table-row {
+  border-bottom: 1px solid var(--color-white-10);
+  transition: background-color 0.15s;
+}
+
+.table-row:hover {
+  background-color: var(--color-white-5);
+}
+
+.table-cell {
+  padding: 1rem 1.5rem;
+  font-family: monospace;
+}
+
+.no-data-container {
+  padding: 2.5rem 0;
+  border-radius: 0.5rem;
+}
+
+.mobile-data-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.mobile-card {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-white-20);
+}
+
+.metric-label {
+  font-size: 0.75rem;
+}
+
+.metric-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}

@@ -6,6 +6,7 @@ import FilterControls from "./FilterControls";
 import DataTable from "./DataTable";
 import Pagination from "./Pagination";
 import SummaryCard from "./SummaryCard";
+import "../styles/Dashboard.css"; 
 
 const ITEMS_PER_PAGE = 15; //Items shown per page
 const MAX_DATA_POINTS = 5000; //Maximum data points to store in memory

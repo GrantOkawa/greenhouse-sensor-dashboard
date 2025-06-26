@@ -1,0 +1,33 @@
+/* Header.css */
+.header {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .header-title {
+    font-size: 1.875rem;
+  }
+}
+
+.header-subtitle {
+  font-size: 0.875rem;
+}
+
+.record-count {
+  font-size: 0.875rem;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .record-count {
+    display: block;
+  }
+}

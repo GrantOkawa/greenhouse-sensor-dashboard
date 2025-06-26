@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { SensorData } from "../types";
+import "../styles/DataTable.css"; 
 
 //Converts ISO timestamp to a human-readable format
 const formatTimestamp = (isoString: string): string => {
