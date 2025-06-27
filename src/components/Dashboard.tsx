@@ -26,7 +26,6 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1); // State to hold current page number
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc"); // Stores sort direction (asc or desc)
 
-  // Memoized filter function for better performance
   // Checks if a given sensor data point is within the specified filters
   const isDataWithinFilters = useCallback(
     (data: SensorData, filters: Filters): boolean => {
@@ -42,7 +41,7 @@ const Dashboard = () => {
     []
   );
 
-  // Memoized sort function
+  // Sort function
   const sortDataByTimestamp = useCallback(
     (data: SensorData[], order: SortOrder): SensorData[] => {
       return [...data].sort((a, b) => {
