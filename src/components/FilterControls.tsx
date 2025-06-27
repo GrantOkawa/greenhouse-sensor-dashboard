@@ -1,4 +1,3 @@
-import React from "react";
 import { Filters } from "../types";
 import { SortOrder } from "../types";
 import "../styles/FilterControls.css"; 

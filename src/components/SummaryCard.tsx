@@ -1,5 +1,3 @@
-import React from "react";
-
 // Structure of the data used for summary statistics
 interface SummaryStats {
   avgTemp: number;

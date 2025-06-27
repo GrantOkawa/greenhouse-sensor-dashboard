@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/Header.css"; 
 
 // Header component to display the title and number of records

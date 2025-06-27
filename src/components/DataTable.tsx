@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { SensorData } from "../types";
 import "../styles/DataTable.css"; 
 
