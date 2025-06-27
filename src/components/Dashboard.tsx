@@ -10,8 +10,8 @@ import "../styles/Dashboard.css";
 
 const ITEMS_PER_PAGE = 15; //Items shown per page
 const MAX_DATA_POINTS = 5000; //Maximum data points to store in memory
-const SENSOR_COUNT = 50; //Number of sensors to simulate
-const UPDATE_INTERVAL = 2000; //Update interval in milliseconds (every 2 seconds)
+const SENSOR_COUNT = 100; //Number of sensors to simulate
+const UPDATE_INTERVAL = 1000; //Update interval in milliseconds (every second)
 
 // Initial filter values for temperature, humidity, and air quality
 const INITIAL_FILTERS: Filters = {
