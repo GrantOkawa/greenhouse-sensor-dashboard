@@ -177,10 +177,7 @@ const DataTable = memo(({ data }: { data: SensorData[] }) => {
           </thead>
           <tbody>
             {data.map((item) => (
-              <TableRow
-                key={`${item.sensorId}-${item.timestamp}`}
-                data={item}
-              />
+              <TableRow key={`${item.sensorId}-${item.timestamp}`} data={item} />
             ))}
           </tbody>
         </table>
