@@ -117,7 +117,8 @@ const Dashboard = () => {
     return sortDataByTimestamp(filteredData, sortOrder);
   }, [filteredData, sortOrder, sortDataByTimestamp]);
 
-  // Pagination computes how many pages are needed based on how many items are sorted and how many go on each page
+  // Pagination computes how many pages are needed based on how many 
+  // items are sorted and how many go on each page
   const totalPages = useMemo(() => {
     return Math.max(1, Math.ceil(sortedData.length / ITEMS_PER_PAGE));
   }, [sortedData.length]);

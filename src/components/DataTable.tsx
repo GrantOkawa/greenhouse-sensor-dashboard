@@ -21,7 +21,8 @@ const formatTimestamp = (isoString: string): string => {
   }
 };
 
-// Returns the appropriate color class based on the metric value and type (temp, humidity, aqi)
+// Returns the appropriate color class based on the metric 
+// value and type (temp, humidity, aqi)
 const getMetricColor = (
   value: number,
   type: "temp" | "humidity" | "aqi"

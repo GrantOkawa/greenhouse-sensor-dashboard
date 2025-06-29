@@ -4,7 +4,7 @@ export interface SensorData {
   timestamp: string;
   airQuality: number; // AQI
   temperature: number; // °C
-  humidity: number; // % RH
+  humidity: number; // % 
 }
 
 // Defines the structure for the filter settings.
