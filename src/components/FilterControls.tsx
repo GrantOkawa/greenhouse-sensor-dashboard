@@ -103,7 +103,7 @@ const FilterControls = ({
             onClick={onSortToggle}
             className="sort-button"
             aria-label={`Sort by timestamp: ${
-              sortOrder === "desc" ? "Newest First" : "Oldest First"
+              sortOrder === "desc" ? "Ascending" : "Descending"
             }`}
           >
             <svg
@@ -121,7 +121,7 @@ const FilterControls = ({
               />
             </svg>
             <span>
-              {sortOrder === "desc" ? "Newest First" : "Oldest First"}
+              {sortOrder === "desc" ? "Ascending" : "Descending"}
             </span>
           </button>{" "}
           {/* Button to toggle sort order */}
