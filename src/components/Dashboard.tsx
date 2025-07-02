@@ -27,8 +27,7 @@ const Dashboard = () => {
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc"); // Stores sort direction (asc or desc)
 
   // Checks if a given sensor data point is within the specified filters
-  const isDataWithinFilters = useCallback(
-    (data: SensorData, filters: Filters): boolean => {
+  const isDataWithinFilters = (data: SensorData, filters: Filters): boolean => {
       return (
         data.temperature >= filters.temperature.min &&
         data.temperature <= filters.temperature.max &&
@@ -37,9 +36,7 @@ const Dashboard = () => {
         data.airQuality >= filters.airQuality.min &&
         data.airQuality <= filters.airQuality.max
       );
-    },
-    []
-  );
+    };
 
   // Sort function
   const sortDataByTimestamp = useCallback(
@@ -131,10 +128,10 @@ const Dashboard = () => {
 
   // Event handlers
   // Updates the filters and resets to page 1
-  const handleFilterChange = useCallback((newFilters: Filters) => {
+  const handleFilterChange = (newFilters: Filters) => {
     setFilters(newFilters);
     setCurrentPage(1);
-  }, []);
+  };
 
   //Handles pagination when the user clicks to change the page
   const handlePageChange = useCallback(
@@ -147,16 +144,16 @@ const Dashboard = () => {
   );
 
   //Toggles the sort order and resets to page 1
-  const handleSortToggle = useCallback(() => {
+  const handleSortToggle = () => {
     setSortOrder((currentOrder) => (currentOrder === "asc" ? "desc" : "asc"));
     setCurrentPage(1);
-  }, []);
+  };
 
   //Resests filters to defaults
-  const handleResetFilters = useCallback(() => {
+  const handleResetFilters = () => {
     setFilters(INITIAL_FILTERS);
     setCurrentPage(1);
-  }, []);
+  };
 
   return (
     <div className="dashboard">
