@@ -21,9 +21,9 @@ const formatTimestamp = (isoString: string): string => {
   }
 };
 
-// Returns the appropriate color class based on the metric 
+// Returns the appropriate colour class based on the metric 
 // value and type (temp, humidity, aqi)
-const getMetricColor = (
+const getMetricColour = (
   value: number,
   type: "temp" | "humidity" | "aqi"
 ): string => {
@@ -69,7 +69,7 @@ const TableRow = memo(({ data }: { data: SensorData }) => (
     <td className="table-cell font-mono">{formatTimestamp(data.timestamp)}</td>{" "}
     <td className="table-cell">{data.sensorId}</td>
     <td
-      className={`table-cell text-right font-semibold ${getMetricColor(
+      className={`table-cell text-right font-semibold ${getMetricColour(
         data.temperature,
         "temp"
       )}`}
@@ -77,7 +77,7 @@ const TableRow = memo(({ data }: { data: SensorData }) => (
       {data.temperature.toFixed(2)} °C
     </td>{" "}
     <td
-      className={`table-cell text-right font-semibold ${getMetricColor(
+      className={`table-cell text-right font-semibold ${getMetricColour(
         data.humidity,
         "humidity"
       )}`}
@@ -85,7 +85,7 @@ const TableRow = memo(({ data }: { data: SensorData }) => (
       {data.humidity.toFixed(2)} %
     </td>{" "}
     <td
-      className={`table-cell text-right font-semibold ${getMetricColor(
+      className={`table-cell text-right font-semibold ${getMetricColour(
         data.airQuality,
         "aqi"
       )}`}
@@ -109,7 +109,7 @@ const MobileCard = memo(({ data }: { data: SensorData }) => (
       <div>
         <p className="metric-label">Temp</p>
         <p
-          className={`metric-value ${getMetricColor(data.temperature, "temp")}`}
+          className={`metric-value ${getMetricColour(data.temperature, "temp")}`}
         >
           {data.temperature.toFixed(1)}°
         </p>{" "}
@@ -118,7 +118,7 @@ const MobileCard = memo(({ data }: { data: SensorData }) => (
       <div>
         <p className="metric-label">Humidity</p>
         <p
-          className={`metric-value ${getMetricColor(
+          className={`metric-value ${getMetricColour(
             data.humidity,
             "humidity"
           )}`}
@@ -129,7 +129,7 @@ const MobileCard = memo(({ data }: { data: SensorData }) => (
       </div>
       <div>
         <p className="metric-label">AQI</p>
-        <p className={`metric-value ${getMetricColor(data.airQuality, "aqi")}`}>
+        <p className={`metric-value ${getMetricColour(data.airQuality, "aqi")}`}>
           {data.airQuality.toFixed(0)}
         </p>{" "}
         {/*Air Quality Index */}
